@@ -34,7 +34,13 @@ object LinearRegression extends App {
     "Penalties", "Composure", "Marking", "StandingTackle", "SlidingTackle", "GKDiving", "GKHandling", "GKKicking",
     "GKPositioning", "GKReflexes")).setOutputCol("features"))
 
-  val output = assembler.transform(df).select($"label", $"features")
+  val output = assembler.setHandleInvalid("skip").transform(df).select($"label", $"features")
+  output.show()
 
+  val lr = new LinearRegression()
+  val lrModel = lr.fit(output)
+  val trainingSummary = lrModel.summary
+  trainingSummary.predictions.show()
+  println(trainingSummary.r2)
 
 }
