@@ -1,10 +1,9 @@
-import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.mllib.regression.LinearRegressionModel
+import org.apache.spark.ml.regression.LinearRegression
 
 
 
-object LinearRegression {
+object LinearRegression extends App {
 
   import org.apache.log4j._
   Logger.getLogger("org").setLevel(Level.ERROR)
@@ -13,6 +12,29 @@ object LinearRegression {
 
   val data = spark.read.option("header", "true").option("inferSchema", "true").format("csv").load("src/main/scala/Resources/data.csv")
 
-  data.show()
+  //features and labels
+  import org.apache.spark.ml.feature.VectorAssembler
+  import org.apache.spark.ml.linalg.Vectors
+
+  import spark.implicits._
+  val df = (data.select(data("Potential").as("label"), $"ID", $"Age", $"Overall", $"Special",
+            $"Weak Foot", $"Skill Moves", $"crossing", $"Finishing", $"HeadingAccuracy", $"ShortPassing",
+            $"Volleys", $"Dribbling", $"Curve", $"FKAccuracy", $"LongPassing", $"BallControl", $"Acceleration", $"SprintSpeed", $"Agility",
+            $"Reactions", $"Balance", $"ShotPower", $"Jumping", $"Stamina", $"Strength", $"LongShots", $"Aggression", $"Interceptions", $"Positioning", $"Vision",
+            $"Penalties", $"Composure", $"Marking", $"StandingTackle", $"SlidingTackle", $"GKDiving", $"GKHandling", $"GKKicking",
+            $"GKPositioning", $"GKReflexes"
+  ))
+
+  df.printSchema()
+
+  val assembler = (new VectorAssembler().setInputCols(Array("ID", "Age", "Overall", "Special",
+    "Weak Foot", "Skill Moves", "crossing", "Finishing", "HeadingAccuracy", "ShortPassing",
+    "Volleys", "Dribbling", "Curve", "FKAccuracy", "LongPassing", "BallControl", "Acceleration", "SprintSpeed", "Agility",
+    "Reactions", "Balance", "ShotPower", "Jumping", "Stamina", "Strength", "LongShots", "Aggression", "Interceptions", "Positioning", "Vision",
+    "Penalties", "Composure", "Marking", "StandingTackle", "SlidingTackle", "GKDiving", "GKHandling", "GKKicking",
+    "GKPositioning", "GKReflexes")).setOutputCol("features"))
+
+  val output = assembler.transform(df).select($"label", $"features")
+
 
 }
