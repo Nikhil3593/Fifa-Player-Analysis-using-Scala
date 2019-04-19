@@ -31,11 +31,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/Regression/LinearRegression.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="64" column="38" lean-forward="true" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+            <state relative-caret-position="-102">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <element signature="e#461#511#0" expanded="true" />
+                <element signature="e#607#657#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Regression/LogisticRegression.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-47">
+              <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+              <folding>
+                <element signature="e#39#87#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,6 +79,7 @@
         <option value="$PROJECT_DIR$/lr.scala" />
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/src/main/scala/Regression/LinearRegression.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Regression/LogisticRegression.scala" />
       </list>
     </option>
   </component>
@@ -82,8 +95,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,6 +130,11 @@
               <item name="scala" type="462c0819:PsiDirectoryNode" />
               <item name="Regression" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="FIFA19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIFA19" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -126,7 +144,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555636604590" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555638118131" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -153,10 +171,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LinearRegression">
+  <component name="RunManager" selected="Application.LogisticRegression">
     <configuration name="LinearRegression" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="LinearRegression" />
       <module name="FIFA19" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LogisticRegression" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Regression.Regression.LogisticRegression" />
+      <module name="FIFA19" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Regression.Regression.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -180,6 +211,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LogisticRegression" />
         <item itemvalue="Application.LinearRegression" />
         <item itemvalue="Scala Console.Scala Console" />
         <item itemvalue="JUnit.All in FIFA19" />
@@ -213,7 +245,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="3110756178356" />
+        <entry key="$PROJECT_DIR$" value="3111273438972" />
         <entry key="$PROJECT_DIR$/build.sbt" value="1814980987" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="2567920773" />
       </map>
@@ -261,7 +293,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1328859" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -315,13 +347,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Regression/LogisticRegression.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+          <folding>
+            <element signature="e#39#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/Regression/LinearRegression.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="64" column="38" lean-forward="true" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+        <state relative-caret-position="-102">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#461#511#0" expanded="true" />
+            <element signature="e#607#657#0" expanded="true" />
           </folding>
         </state>
       </provider>
