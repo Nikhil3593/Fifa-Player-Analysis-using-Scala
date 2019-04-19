@@ -38,7 +38,7 @@ object LinearRegression extends App {
 
   val output = assembler.setHandleInvalid("skip").transform(df).select($"label", $"features")
   //Training and Testing
-  var Array(training, test) = output.select($"label", $"features").randomSplit(Array(0.7,0.3), seed=1234)
+  var Array(training, test) = output.select($"label", $"features").randomSplit(Array(0.7,0.3), seed=10)
 
   //output.show()
 
@@ -52,7 +52,7 @@ object LinearRegression extends App {
 //      .setTrainRatio(0.8)
 //    )
   val model = lr.fit(training)
-  val testOutput = model.transform(test).select("features", "label", "prediction").show()
+  val testOutput = model.transform(test).select("features", "label", "prediction").show(50)
   val testSummary = model.summary
   println(testSummary.rootMeanSquaredError)
   println(testSummary.r2)
