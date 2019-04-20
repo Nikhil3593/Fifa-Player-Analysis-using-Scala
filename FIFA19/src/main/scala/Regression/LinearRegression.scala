@@ -38,24 +38,37 @@ object LinearRegression extends App {
 
   val output = assembler.setHandleInvalid("skip").transform(df).select($"label", $"features")
   //Training and Testing
-  var Array(training, test) = output.select($"label", $"features").randomSplit(Array(0.7,0.3), seed=10)
+  var Array(training, test) = output.select($"label", $"features").randomSplit(Array(0.7,0.3))
 
   //output.show()
 
   val lr = new LinearRegression()
+    .setMaxIter(10)
+    .setRegParam(0.3)
+    .setElasticNetParam(0.8)
+
+  val paramGrid = new ParamGridBuilder().addGrid(lr.regParam, Array(10000, 0.001)).build()
 
   //Train Split
-//  val trainValSplit = (new TrainValidationSplit()
-//      .setEstimator(lr)
-//      .setEvaluator(new RegressionEvaluator().setMetricName("r2"))
-//      .setEstimatorParamMaps(paramGrid)
-//      .setTrainRatio(0.8)
-//    )
+  val trainValSplit = (new TrainValidationSplit()
+      .setEstimator(lr)
+      .setEvaluator(new RegressionEvaluator().setMetricName("r2"))
+      .setEstimatorParamMaps(paramGrid)
+      .setTrainRatio(0.8)
+    )
   val model = lr.fit(training)
-  val testOutput = model.transform(test).select("features", "label", "prediction").show(50)
+  val trainingSummary = model.summary
+  val testOutput = model.transform(test).select("features", "label", "prediction").show(25)
   val testSummary = model.summary
   println(testSummary.rootMeanSquaredError)
   println(testSummary.r2)
+
+  println(s"numIterations: ${testSummary.totalIterations}")
+  println(s"objectiveHistory: [${testSummary.objectiveHistory.mkString(",")}]")
+  testSummary.residuals.show()
+  println(s"RMSE: ${testSummary.rootMeanSquaredError}")
+  println(s"r2: ${testSummary.r2adj}")
+  println(s"r2adj: ${testSummary.r2adj}")
 
 
 //  val lrModel = lr.fit(output)
